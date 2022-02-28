@@ -38,6 +38,7 @@ defmodule EmryComponents.Button do
     opts = %{
       classnames: opts[:classnames] || "",
       variant: opts[:variant] || "default",
+      disabled: opts[:disabled] || ""
     }
 
     variants =
@@ -46,8 +47,15 @@ defmodule EmryComponents.Button do
         "default" -> "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       end
 
+    sizes = ""
+
+    disabled = "disabled:cursor-not-allowed opacity-65"
+
     """
       #{variants}
+      #{sizes}
+      #{disabled}
     """
+    |> EmryComponents.Helpers.handle_classnames()
   end
 end

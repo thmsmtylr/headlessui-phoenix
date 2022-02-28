@@ -56,6 +56,7 @@ defmodule EmryComponents.ButtonTest do
       """)
 
     assert html =~ ~s{disabled}
+    assert html =~ "disabled:cursor-not-allowed opacity-65"
   end
 
   test "button variant default" do
