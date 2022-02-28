@@ -69,15 +69,26 @@ defmodule EmryComponents.ButtonTest do
     assert html =~ "inline-flex items-center px-6 py-3"
   end
 
-  test "button custom styles" do
+  test "custom button variant without classnames" do
     assigns = %{}
 
     html =
       rendered_to_string(~H"""
-        <.button variant="custom" classnames="arbitrary classes" />
+        <.button variant="custom" classnames="" />
       """)
 
-    assert html =~ "arbitrary classes"
+      assert html =~ ~s{class=""}
+  end
+
+  test "custom button variant with classnames" do
+    assigns = %{}
+
+    html =
+      rendered_to_string(~H"""
+        <.button variant="custom" classnames="custom-button-class" />
+      """)
+
+      assert html =~ ~s{class="custom-button-class"}
   end
 
   test "button sizes" do
