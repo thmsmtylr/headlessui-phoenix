@@ -9,7 +9,7 @@ defmodule EmryComponents.Button do
   # prop link_type, :string, options: ["button", "a", "live_patch", "live_redirect"]
   # prop label, :string
   # prop size, :string
-  # prop variant, :string
+  # prop variant, :string, default: "default"
   # prop disabled, :boolean, default: false
   # slot default
   def button(assigns) do
@@ -19,17 +19,35 @@ defmodule EmryComponents.Button do
     |> assign_new(:disabled, fn -> false end)
     |> assign_new(:to, fn -> nil end)
     |> assign_new(:label, fn -> nil end)
-    |> assign_new(:unstyled, fn -> nil end)
     |> assign_new(:type, fn -> "button" end)
+    |> assign_new(:classnames, fn -> classnames(assigns) end)
+    |> assign_new(:variant, fn -> nil end)
 
     ~H"""
-    <button type={@type}>
+    <button type={@type} disabled={@disabled} class={@classnames}>
       <%= if @inner_block do %>
         <%= render_slot(@inner_block) %>
       <% else %>
         <%= @label %>
       <% end %>
     </button>
+    """
+  end
+
+  defp classnames(opts) do
+    opts = %{
+      classnames: opts[:classnames] || "",
+      variant: opts[:variant] || "default",
+    }
+
+    variants =
+      case opts[:variant] do
+        "custom" -> opts[:classnames]
+        "default" -> "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      end
+
+    """
+      #{variants}
     """
   end
 end
