@@ -6,7 +6,7 @@
 
 Phoenix Live View Components
 
-# Getting Started
+## Getting Started
 
 To start your Phoenix server:
 
