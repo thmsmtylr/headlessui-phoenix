@@ -2,6 +2,12 @@
   <a href="https://emry.dev"><img src="assets/images/emry-icon.png?raw=true" width="70" /></a>
 </p>
 
+# Emry
+
+Phoenix Live View Components
+
+# Getting Started
+
 To start your Phoenix server:
 
 - Install dependencies with `mix deps.get`
