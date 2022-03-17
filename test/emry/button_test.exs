@@ -78,7 +78,7 @@ defmodule EmryComponents.ButtonTest do
         <.button variant="custom" classnames="" />
       """)
 
-      assert html =~ ~s{class=""}
+    assert html =~ ~s{class=""}
   end
 
   test "custom button variant with classnames" do
@@ -89,7 +89,7 @@ defmodule EmryComponents.ButtonTest do
         <.button variant="custom" classnames="custom-button-class" />
       """)
 
-      assert html =~ ~s{class="custom-button-class"}
+    assert html =~ ~s{class="custom-button-class"}
   end
 
   test "button sizes" do

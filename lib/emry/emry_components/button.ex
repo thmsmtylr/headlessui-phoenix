@@ -13,16 +13,17 @@ defmodule EmryComponents.Button do
   # prop disabled, :boolean, default: false
   # slot default
   def button(assigns) do
-    assigns = assigns
-    |> assign_new(:inner_block, fn -> nil end)
-    |> assign_new(:size, fn -> "md" end)
-    |> assign_new(:disabled, fn -> false end)
-    |> assign_new(:to, fn -> nil end)
-    |> assign_new(:label, fn -> nil end)
-    |> assign_new(:type, fn -> "button" end)
-    |> assign_new(:classnames, fn -> classnames(assigns) end)
-    |> assign_new(:variant, fn -> nil end)
-    |> assign_new(:phx_click, fn -> nil end)
+    assigns =
+      assigns
+      |> assign_new(:inner_block, fn -> nil end)
+      |> assign_new(:size, fn -> "md" end)
+      |> assign_new(:disabled, fn -> false end)
+      |> assign_new(:to, fn -> nil end)
+      |> assign_new(:label, fn -> nil end)
+      |> assign_new(:type, fn -> "button" end)
+      |> assign_new(:classnames, fn -> classnames(assigns) end)
+      |> assign_new(:variant, fn -> nil end)
+      |> assign_new(:phx_click, fn -> nil end)
 
     ~H"""
     <button
@@ -49,8 +50,11 @@ defmodule EmryComponents.Button do
 
     variants =
       case opts[:variant] do
-        "custom" -> opts[:classnames]
-        "default" -> "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        "custom" ->
+          opts[:classnames]
+
+        "default" ->
+          "inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       end
 
     sizes = ""

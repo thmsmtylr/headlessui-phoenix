@@ -7,8 +7,9 @@ defmodule EmryComponents.Modal do
   alias Phoenix.LiveView.JS
 
   def modal(assigns) do
-    assigns = assigns
-    |> assign_new(:inner_block, fn -> nil end)
+    assigns =
+      assigns
+      |> assign_new(:inner_block, fn -> nil end)
 
     id = EmryComponents.Helpers.handle_uuid()
 
