@@ -22,9 +22,15 @@ defmodule EmryComponents.Button do
     |> assign_new(:type, fn -> "button" end)
     |> assign_new(:classnames, fn -> classnames(assigns) end)
     |> assign_new(:variant, fn -> nil end)
+    |> assign_new(:phx_click, fn -> nil end)
 
     ~H"""
-    <button type={@type} disabled={@disabled} class={@classnames}>
+    <button
+      type={@type}
+      disabled={@disabled}
+      class={@classnames}
+      phx-click={@phx_click}
+    >
       <%= if @inner_block do %>
         <%= render_slot(@inner_block) %>
       <% else %>

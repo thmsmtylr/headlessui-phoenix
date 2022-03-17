@@ -15,7 +15,7 @@ defmodule EmryComponents do
         # Breadcrumbs,
         # Pagination,
         # Link,
-        # Modal,
+        Modal,
         # Tabs,
         # Card,
         # Table
