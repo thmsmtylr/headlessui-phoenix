@@ -12,25 +12,13 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
 
-    services:
-      db:
-        image: postgres:13
-        ports: ['5432:5432']
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1.7
         with:
-          elixir-version: '1.13.1' # Define the elixir version [required]
-          otp-version: '24.2' # Define the OTP version [required]
+          elixir-version: "1.13.1" # Define the elixir version [required]
+          otp-version: "24.2" # Define the OTP version [required]
       - name: Restore dependencies cache
         if: ${{ false }}
         uses: actions/cache@v2
@@ -42,7 +30,5 @@ jobs:
         run: mix deps.get
       - name: Check formatting
         run: mix format --check-formatted
-      - name: Check code conventions
-        run: mix credo --min-priority high
       - name: Run tests
         run: mix test
