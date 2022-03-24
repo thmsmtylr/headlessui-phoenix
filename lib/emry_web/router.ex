@@ -1,5 +1,6 @@
 defmodule EmryWeb.Router do
   use EmryWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,9 +17,14 @@ defmodule EmryWeb.Router do
 
   scope "/", EmryWeb do
     pipe_through :browser
-
-    get "/", PageController, :index
+    live "/", PageLive.Index, :index
   end
+
+  # scope "/", EmryWeb do
+  #   pipe_through :browser
+
+  #   get "/", PageController, :index
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", EmryWeb do

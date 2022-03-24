@@ -11,10 +11,10 @@ function withOpacityValue(variable) {
 // https://tailwindcss.com/docs/configuration
 module.exports = {
   content: [
-    "./js/**/*.js",
-    "../lib/*_web.ex",
-    "../lib/*_web/**/*.*ex",
-    "../lib/emry/emry_components/**/*.*ex",
+    "../lib/**/*.ex",
+    "../lib/**/*.leex",
+    "../lib/**/*.heex",
+    "../lib/**/*.eex",
   ],
   theme: {
     extend: {

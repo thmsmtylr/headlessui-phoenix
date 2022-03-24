@@ -4,7 +4,7 @@ defmodule EmryComponents do
       import EmryComponents.{
         # Alert,
         # Badge,
-        Button,
+        # Button,
         # Container,
         # Dropdown,
         # Form,
@@ -15,10 +15,11 @@ defmodule EmryComponents do
         # Breadcrumbs,
         # Pagination,
         # Link,
-        Modal
+        # Modal
         # Tabs,
         # Card,
         # Table
+        Menu
       }
     end
   end
