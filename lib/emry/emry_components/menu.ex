@@ -8,41 +8,46 @@ defmodule EmryComponents.Menu do
   alias Phoenix.LiveView.JS
   import EmryComponents.Helpers
 
-  @button_selector "emry-headlessui-menu-items-"
+  @menu_id "emry-headlessui-menu-items-#{UUID.uuid4()}"
+  defp menu_id(), do: "#{@menu_id}-#{UUID.uuid4()}"
+  @buttin_id "emry-headlessui-button-#{UUID.uuid4()}"
+  defp button_id(), do: "#{@button_id}-#{UUID.uuid4()}"
 
-  defp button_selector(), do: "#{@button_selector}-#{UUID.uuid4()}"
+  defp handle_classnames([slot]), do: fn -> format_classnames(slot[:class]) end
 
-  def toggle_menu(js \\ %JS{}, selector) do
+  def handle_toggle_menu(js \\ %JS{}, selector) do
     js
-    |> JS.toggle(
-      in: nil,
-      out: "hidden",
-      to: "##{selector}"
-    )
+    |> JS.toggle(to: "##{selector}")
+  end
+
+  def handle_click_away_menu(js \\ %JS{}, selector) do
+    js
+    |> JS.hide(to: "##{selector}")
   end
 
   def menu(assigns) do
     assigns =
       assigns
-      |> assign_new(:button_selector, &button_selector/0)
-      |> assign_new(:button_classes, fn ->
-        assigns.menu_button |> hd() |> Map.get(:class) |> handle_classnames()
-      end)
-      |> assign_new(:menu_items_classes, fn ->
-        assigns.menu_items |> hd() |> Map.get(:class) |> handle_classnames()
-      end)
+      |> assign_new(:menu_id, &menu_id/0)
+      |> assign_new(:button_id, &button_id/0)
+      |> assign_new(:button_classes, handle_classnames(assigns.menu_button))
+      |> assign_new(:menu_items_classes, handle_classnames(assigns.menu_items))
 
     ~H"""
     <button
       type="button"
       class={@button_classes}
-      phx-click={toggle_menu(@button_selector)}
+      phx-click={handle_toggle_menu(@menu_id)}
+      phx-click-away={handle_click_away_menu(@menu_id)}
+      id={@button_id}
     >
       <%= render_slot(@menu_button) %>
     </button>
     <div
-      id={@button_selector}
-      class={@menu_items_classes <> "hidden"}
+      id={@menu_id}
+      class={@menu_items_classes}
+      role="menu"
+      style="display: none;"
     >
       <%= render_slot(@menu_items) %>
     </div>

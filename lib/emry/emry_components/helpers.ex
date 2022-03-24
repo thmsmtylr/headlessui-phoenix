@@ -2,7 +2,7 @@ defmodule EmryComponents.Helpers do
   @doc """
   Remove newlines and extra spaces from a string
   """
-  def handle_classnames(string) do
+  def format_classnames(string) do
     case string do
       nil ->
         ""
