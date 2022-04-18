@@ -18,6 +18,7 @@ defmodule EmryWeb.Router do
   scope "/", EmryWeb do
     pipe_through :browser
     live "/", PageLive.Index, :index
+    live "/documentation", PageLive.Documentation, :documentation
   end
 
   # scope "/", EmryWeb do

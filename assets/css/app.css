@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --gradient-hero: linear-gradient(
+    90deg,
+    #7a28ff,
+    #9f17f2,
+    #b900e5,
+    #ce00d8,
+    #df00cb,
+    #ec00bf,
+    #f712b4,
+    #ff28aa
+  );
+}
+
+* {
+  scrollbar-color: var(--gradient-hero);
+  scrollbar-width: thin;
+}
