@@ -1,6 +1,6 @@
 defmodule EmryWeb.LayoutView do
   use EmryWeb, :view
-  
+
   def header(assigns) do
     ~H"""
     <header class="bg-black">

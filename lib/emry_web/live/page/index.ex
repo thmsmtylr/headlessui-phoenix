@@ -5,5 +5,5 @@ defmodule EmryWeb.PageLive.Index do
   import EmryWeb.HeroView
   import EmryWeb.ComponentListView
   # Headless UI Components
-  import EmryComponents.Menu
+  import EmryComponents.{Menu, Tabs}
 end

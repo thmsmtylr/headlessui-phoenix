@@ -16,7 +16,7 @@ defmodule EmryComponents do
         # Pagination,
         # Link,
         # Modal
-        # Tabs,
+        Tabs,
         # Card,
         # Table
         Menu
