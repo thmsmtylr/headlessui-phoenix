@@ -11,7 +11,7 @@ defmodule EmryWeb.HeroView do
             Turbocharge
           </span>
           your
-          <br /> Pheonix development
+          <br /> Phoenix development
         </h1>
         <p class="text-gray-400 text-xl text-center font-medium lg:max-w-4xl mx-auto z-10 mb-8">
           Emry is a set of unstyled UI components for Phoenix that helps high
